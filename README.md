@@ -3,6 +3,7 @@
 **Introduction**
 
 This project explores the prediction of flight delays and cancellations using machine learning techniques. It utilizes the publicly available Flight Delay Dataset (2018-2022) from Kaggle ([Flight Status Prediction](https://www.kaggle.com/datasets/robikscube/flight-delay-dataset-20182022)).
+Link to the notebook: [Flight Disruption System.ipynb](https://www.kaggle.com/code/atharva729/flight-delay-prediction)
 
 **Project Goals**
 
