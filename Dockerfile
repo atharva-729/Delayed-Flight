@@ -1,11 +1,20 @@
-FROM python:3.10-slim
+# Dockerfile
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY app.py .
+# system deps (if catboost needs build tools; often not needed for wheel)
+RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
 
-RUN pip install fastapi uvicorn catboost xgboost joblib numpy pydantic
+# copy requirements & install (cache-friendly)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# copy app and models
+COPY app.py .
+COPY models/ ./models/
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# run with uvicorn
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+catboost
+joblib
+numpy
+pandas   # if your preprocessor needs it
+scikit-learn  # if you saved pipeline with sklearn
